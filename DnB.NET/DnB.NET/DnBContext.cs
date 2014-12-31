@@ -27,7 +27,7 @@ namespace DnB.NET
         /// Local variable that holds the WebRequests for D&B.
         /// </summary>
         private WebRequest _Request;
-        private string _DnBBasicURL =  String.Empty;
+        private string _DnBBasicURL = String.Empty;
         private string _DUNNumber = String.Empty;
         private string _ErrorMessage = String.Empty;
         #endregion
@@ -208,7 +208,7 @@ namespace DnB.NET
             DnBProfile dnbProfile = new DnBProfile();
             dnbProfile.BusinessBasicInfo = new Candidate();
             dnbProfile.PricipalOfficers = new List<PrincipalOfficer>();
-            
+
             try
             {
                 //Build the API  request to be send.
@@ -228,7 +228,21 @@ namespace DnB.NET
                             _ErrorMessage = "No results found";
                             return null;
                         }
-                        
+                        //Get basic info
+                        dnbProfile.BusinessBasicInfo.DUN = "";
+                        dnbProfile.BusinessBasicInfo.BusinessName = "";
+                        dnbProfile.BusinessBasicInfo.StreetAddress = "";
+                        dnbProfile.BusinessBasicInfo.StreetAddress2 = "";
+                        dnbProfile.BusinessBasicInfo.City = "";
+                        dnbProfile.BusinessBasicInfo.State = "";
+                        dnbProfile.BusinessBasicInfo.PostalCode = "";
+                        dnbProfile.BusinessBasicInfo.PhoneNumber = "";
+                        dnbProfile.BusinessBasicInfo.FaxNumber = "";
+
+                        dnbProfile.CompanyLineBusiness = "";
+                        dnbProfile.TotalEmployees = 0;
+                        dnbProfile.Yearstarted = "";
+
 
                     }
                 }
@@ -250,7 +264,7 @@ namespace DnB.NET
             }
             catch (Exception ex)
             {
-                _ErrorMessage = ex.Message + " | " + ex.StackTrace + " | " +ex.Source;
+                _ErrorMessage = ex.Message + " | " + ex.StackTrace + " | " + ex.Source;
                 return null;
             }
         }
