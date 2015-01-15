@@ -31,7 +31,7 @@ namespace DnB.NET
         public string Title { get; set; }
     }
     /// <summary>
-    /// D&B Profile Information.
+    /// DnB Profile Information.
     /// </summary>
     public class DnBProfile
     {

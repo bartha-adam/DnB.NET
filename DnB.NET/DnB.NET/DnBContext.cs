@@ -212,7 +212,7 @@ namespace DnB.NET
             try
             {
                 //Build the API  request to be send.
-                _Request = WebRequest.Create(new Uri(String.Format("{0}{1}", ConfigurationManager.AppSettings["dnbBasicURL"], StatementBuilder.CompanyProfile(dun))));
+                _Request = WebRequest.Create(new Uri(String.Format("{0}{1}", _DnBBasicURL, StatementBuilder.CompanyProfile(dun))));
                 _Request.Method = "GET";
                 _Request.ContentType = "application/json; charset=UTF-8";
                 _Request.Headers.Add("Authorization", _Token);
