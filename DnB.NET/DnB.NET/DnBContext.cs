@@ -229,20 +229,19 @@ namespace DnB.NET
                             return null;
                         }
                         //Get basic info
-                        dnbProfile.BusinessBasicInfo.DUN = "";
-                        dnbProfile.BusinessBasicInfo.BusinessName = "";
-                        dnbProfile.BusinessBasicInfo.StreetAddress = "";
+                        dnbProfile.BusinessBasicInfo.DUN = dun;
+                        dnbProfile.BusinessBasicInfo.BusinessName = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.OrganizationName.OrganizationPrimaryName[0].OrganizationName.Value;
+                        dnbProfile.BusinessBasicInfo.StreetAddress = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.Location.PrimaryAddress[0].StreetAddressLine[0].LineText;
                         dnbProfile.BusinessBasicInfo.StreetAddress2 = "";
-                        dnbProfile.BusinessBasicInfo.City = "";
-                        dnbProfile.BusinessBasicInfo.State = "";
-                        dnbProfile.BusinessBasicInfo.PostalCode = "";
-                        dnbProfile.BusinessBasicInfo.PhoneNumber = "";
+                        dnbProfile.BusinessBasicInfo.City = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.Location.PrimaryAddress[0].PrimaryTownName;
+                        dnbProfile.BusinessBasicInfo.State = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.Location.PrimaryAddress[0].TerritoryAbbreviatedName;
+                        dnbProfile.BusinessBasicInfo.PostalCode = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.Location.PrimaryAddress[0].PostalCode;
+                        dnbProfile.BusinessBasicInfo.PhoneNumber = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.Telecommunication.TelephoneNumber[0].TelecommunicationNumber;
                         dnbProfile.BusinessBasicInfo.FaxNumber = "";
 
-                        dnbProfile.CompanyLineBusiness = "";
+                        dnbProfile.CompanyLineBusiness = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.ActivitiesAndOperations.LineOfBusinessDetails[0].LineOfBusinessDescription.Value;
                         dnbProfile.TotalEmployees = 0;
-                        dnbProfile.Yearstarted = "";
-
+                        dnbProfile.Yearstarted = companyProfile.OrderProductResponse.OrderProductResponseDetail.Product.Organization.OrganizationDetail.OrganizationStartYear;
 
                     }
                 }
